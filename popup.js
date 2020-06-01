@@ -42,9 +42,12 @@ function loadData(){
                     });
 
                     const element = document.getElementById('live');
-                    const y = element.getBoundingClientRect().top + window.pageYOffset + -52;
+                    if(element != null){
+                        const y = element.getBoundingClientRect().top + window.pageYOffset + -52;
+                        window.scrollTo({top: y, behavior: 'smooth'});
+                    }
 
-                    window.scrollTo({top: y, behavior: 'smooth'});
+                    
                     return;
                 }
                 
