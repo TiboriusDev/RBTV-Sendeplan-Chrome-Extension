@@ -11,4 +11,4 @@ Beim öffenen springt man direkt zur aktuellen Sendung.<br>
 Ein klick auf das Logo schickt einen zur Rocketbeans.tv Webseite.
 
 ## Bild
-
+![GitHub Logo](http://dl.tiborius.de/img_chrome_1.png)
