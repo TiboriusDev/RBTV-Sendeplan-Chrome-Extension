@@ -1,7 +1,8 @@
 let content = document.getElementById("content");
 let error = document.getElementById("console");
 let date = new Date();
-let dayNow = date.getFullYear() +'-'+ ("0" + (date.getMonth() + 1)).slice(-2) +'-'+ (date.getDate()-1);
+let yesterday = new Date((date.setDate(date.getDate()-1)));
+let dayNow = date.getFullYear() +'-'+ ("0" + (yesterday.getMonth()+1)).slice(-2) +'-'+ ("0" + yesterday.getDate()).slice(-2);
 
 function loadData(){
     fetch('https://api.rocketbeans.tv/v1/schedule/normalized/?startDay=' + Math.round(new Date().getTime()/1000))
@@ -15,6 +16,8 @@ function loadData(){
                     days.elements.forEach(sendung => {
                         var sendeTime = new Date(sendung.timeStart);
                         var onAir, live;
+
+                       
 
                         var type = (sendung.type != "rerun") ? '<div class="dot '+ sendung.type +'"></div>' : '';
                         if (date.getTime() > new Date(sendung.timeStart).getTime() && date.getTime() < new Date(sendung.timeEnd).getTime()){
@@ -30,6 +33,8 @@ function loadData(){
                         var hours = Math.floor(time / 60);
 
                         var timeOutput = ((hours > 0) ? hours +' Std ' + ((minutes > 0) ? minutes +' Min' : '') : minutes +' Min')
+
+                        
 
                         content.innerHTML +='<div class="box" id="box">'+ type +'<div class="time" '+ live +'>'+ (sendeTime.getHours() +':'+ ("0" + sendeTime.getMinutes()).slice(-2)).toString() +' Uhr</div>'+
                                     '<span class="title">'+ sendung.title +'</span><br>'+ sendung.topic +

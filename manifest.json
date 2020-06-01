@@ -2,11 +2,6 @@
     "name": "RBTV Sendeplan",
     "version": "1.0",
     "description": "Zeigt den Sendeplan von Rocketbeans.tv",
-    "permissions": ["activeTab", "declarativeContent", "storage"],
-    "background": {
-      "scripts": ["background.js"],
-      "persistent": false
-    },
     "browser_action": {
         "default_popup": "popup.html",
         "default_icon": {
