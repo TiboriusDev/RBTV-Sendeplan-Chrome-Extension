@@ -40,7 +40,7 @@ body{
 
 .box{
     margin: 4px 5px;
-    padding: 10px;
+    padding: 55px 10px 10px 10px;
     border-radius: 5px;
     font-size: 12px;
     min-height: 84px;
@@ -89,4 +89,15 @@ body{
     left: 0;
     background: #f7b731;
     border-radius: 0 0 5px 5px;
+}
+
+.show-image{
+    position: absolute;
+    height: 45px;
+    width: 336px;
+    top: 2px;
+    left: 2px;
+    border-radius: 5px 5px 0 0;
+    background-position: center;
+    background-size: cover;
 }
