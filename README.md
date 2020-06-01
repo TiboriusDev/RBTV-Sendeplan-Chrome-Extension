@@ -12,3 +12,6 @@ Ein klick auf das Logo schickt einen zur Rocketbeans.tv Webseite.
 
 ## Bild
 ![GitHub Logo](http://dl.tiborius.de/img_chrome_1.png)
+
+## Credits
+Bilder in dieser Erweiterung sind Eigentum der Rocket Beans Entertainment GmbH
