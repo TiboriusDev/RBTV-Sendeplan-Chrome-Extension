@@ -36,7 +36,8 @@ async function loadData(){
 
                 content.innerHTML +='<div class="box" id="'+ live +'">'+ type +'<div class="time">'+ (sendeTime.getHours() +':'+ ("0" + sendeTime.getMinutes()).slice(-2)).toString() +' Uhr</div>'+
                             '<span class="title">'+ sendung.title +'</span><br>'+ sendung.topic +
-                            '<div class="dauer">'+ timeOutput +'</div>'+ onAir + showImage +'<div></div>';
+                            '<div class="dauer">'+ timeOutput +'</div>'+ onAir + showImage +'<div>' +
+                            '<a href="https://rocketbeans.tv/mediathek/video/' + sendung.episodeId +  '" target="_blank"><div class="vod"><img src="images/svg/yt.svg"></div></a></div>';
             });
 
             const element = document.getElementById('live');
