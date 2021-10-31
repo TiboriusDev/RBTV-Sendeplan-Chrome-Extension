@@ -1,5 +1,4 @@
 let content = document.getElementById("content");
-let error = document.getElementById("console");
 let date = new Date();
 let yesterday = new Date((date.setDate(date.getDate() - 1)));
 let dayNow = date.getFullYear() + '-' + ("0" + (yesterday.getMonth() + 1)).slice(-2) + '-' + ("0" + yesterday.getDate()).slice(-2);
@@ -81,20 +80,8 @@ chrome.tabs.query({ 'active': true, 'lastFocusedWindow': true }, function (tabs)
         if (found != null) {
             refBox.style.display = "block";
             var site = (rex[i].toString()).replace(/\//g, "")
-            refBox.innerHTML = '<div onclick="openReflink(\'' + tabs[0].id + '\', \'' + refs[i] + '\'); isClicked();"><span>Klicke um RBTV auf ' + site.charAt(0).toUpperCase() + site.slice(1) + ' zu Unterst&uuml;tze</span><img src="images/svg/' + site + '.svg"></div><div class="thx" id="thx"><img src="images/svg/heart.svg"></div>';
+            refBox.innerHTML = '<div><a id="isclicked" href="' + refs[i] + '" target="_blank"><span>Klicke um RBTV auf ' + site.charAt(0).toUpperCase() + site.slice(1) + ' zu Unterst&uuml;tze</span><img src="images/svg/' + site + '.svg"></a></div><div class="thx" id="thx"><img src="images/svg/heart.svg"></div>';
             return;
         }
-    }
+    }    
 });
-
-function openReflink(id, url) {
-    chrome.tabs.update(parseInt(id), { url: url });
-}
-
-function isClicked() {
-    document.getElementById("thx").classList.add("isClicked");
-
-    setTimeout(function () {
-        document.getElementById("thx").classList.remove("isClicked");
-    }, 1500);
-}
