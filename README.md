@@ -13,7 +13,7 @@ Ein klick auf das Logo schickt einen zur Rocketbeans.tv Webseite.
 Wenn man eine Seite besucht, auf der man RBTV unterstützen kann, dann zeit die Erweiterung das an und gibt dir die möglichkeit auf den Link in der Erweiterung zu klicken. 
 
 ## Bild
-![GitHub Logo](https://dl.tiborius.com/img_chrome_1.png)
+![GitHub Logo](https://d.tiborius.com/img_chrome_1.png)
 
 ## Credits
 Bilder in dieser Erweiterung sind Eigentum der Rocket Beans Entertainment GmbH
