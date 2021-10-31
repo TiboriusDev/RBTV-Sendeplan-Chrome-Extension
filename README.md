@@ -4,7 +4,8 @@ Zeigt den Sendeplan von Rocketbeans.tv
 ## Anzeigen
 - Live (Rot) und Premiere (Blau) werden durch einen Punkt neben der Startzeit angzeigt.
 - Dauer der Sendung steht in der rechten unteren Ecke.
-- Was aktuell läuft wird durch einen Gelben Balken an der Unterseite angezeigt.box
+- Was aktuell läuft wird durch einen Gelben Balken an der Unterseite angezeigt.
+- Auf der linken Seite sieht man wer auf Twitch Online ist.
 
 ## Funktion
 Beim öffenen springt man direkt zur aktuellen Sendung.<br>
