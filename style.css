@@ -38,6 +38,7 @@ a{
 
 .page{
     display: flex;
+    width: 388px;
 }
 
 #content{
@@ -47,6 +48,7 @@ a{
     flex-direction: column;
     margin-top: 40px;
     overflow: auto;
+    width: 349px;
 }
 
 .box{
@@ -105,7 +107,7 @@ a{
 .show-image{
     position: absolute;
     height: 45px;
-    width: 336px;
+    width: 335px;
     top: 2px;
     left: 2px;
     border-radius: 5px 5px 0 0;
@@ -170,7 +172,7 @@ a{
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 50px;
+    width: 39px;
     height: 100%;
     background: #000;
     margin-top: 40px;
