@@ -1,7 +1,7 @@
 let content = document.getElementById("content");
 let date = new Date();
-// let yesterday = new Date((date.setDate(date.getDate() - 1)));
-let dayNow = date.getFullYear() + '-' + ("0" + (date.getMonth() + 1)).slice(-2) + '-' + ("0" + date.getDay()).slice(-2);
+let yesterday = new Date((date.setDate(date.getDate() - 1)));
+let dayNow = date.getFullYear() + '-' + ("0" + (yesterday.getMonth() + 1)).slice(-2) + '-' + ("0" + yesterday.getDate()).slice(-2);
 
 async function loadData() {
     let sendeplanJson = await fetch('https://api.rocketbeans.tv/v1/schedule/normalized/?startDay=' + Math.round(new Date().getTime() / 1000));
