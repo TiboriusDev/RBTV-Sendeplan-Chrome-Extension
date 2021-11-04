@@ -11,10 +11,6 @@ a{
     color: #f7b731;
 }
 
-.live{background: #fc5c65;}
-.premiere{background: #45aaf2;}
-.rerun{background: #333;}
-
 .topbar{
     position: fixed;
     top: 0;
@@ -22,13 +18,13 @@ a{
     width: 100%;
     background: #000;
     z-index: 2;
+    display: flex;
+    align-items: center;
+    color: #fff;
 }
 
 .topbar span{
-    color: #fff;
-    position: absolute;
-    top: 11px;
-    left: 45px;
+    flex: 1;
 }
 
 .topbar img{
@@ -36,12 +32,25 @@ a{
     padding: 7px;
 }
 
+.tabs {
+    display: flex;
+    margin-right: 5px;
+}
+
+.tab {
+    padding: 5px 10px;
+    margin: 2px;
+    background: #333;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
 .page{
     display: flex;
     width: 388px;
 }
 
-#content{
+.content{
     height: 471px;
     color: #fff;
     display: flex;
@@ -158,14 +167,29 @@ a{
     transition: all 1s ease-in-out;
 }
 
-.vod img{
-    height: 30px;
+.vod-twitch img{
+    height: 15px;
+    position: relative;
+    top: 2px;
+    right: 5px;
 }
 
-.vod{
-    position: absolute;
-    top: 50px;
+.vod-yt img{
+    height: 15px;
+    position: relative;
+    top: 2px;
     right: 5px;
+}
+
+.vod-twitch, .vod-yt{
+    display: flex;
+    position: absolute;
+    top: 55px;
+    right: 10px;
+    color: #fff;
+    background: #222;
+    padding: 5px 15px;
+    border-radius: 5px;
 }
 
 #streams{
@@ -187,3 +211,11 @@ a{
     margin: 5px;
     background-size: contain;
 }
+
+.live{background: #fc5c65;}
+.premiere{background: #45aaf2;}
+.rerun{background: #333;}
+.twitch{background: #9146ff;}
+.active{background: #e60007;}
+
+.hidden {display: none;}
