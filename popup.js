@@ -1,19 +1,35 @@
-const content_live = document.getElementById("content_live");
-const content_vod = document.getElementById("content_vod");
+document.cookie = "SameSite=None; Secure";
+
+var curr_show_day;
+
+const days_Name = ["Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag", "Sonntag"];
+
+const content_live = document.getElementById("content-live");
+const content_vod = document.getElementById("content-vod");
 let date = new Date();
 let yesterday = new Date((date.setDate(date.getDate() - 1)));
 let dayNow = date.getFullYear() + '-' + ("0" + (yesterday.getMonth() + 1)).slice(-2) + '-' + ("0" + yesterday.getDate()).slice(-2);
-let streamLink = {Etienne: "edelive", Simon: "mon_official", Nils: "nilsbomhofflive", Marah: "m_a_r_a_h", Viet: "pixelviet", Florentin: "florentinwill", Krogi: "krogmann"};
+let tomorrow = new Date((date.setDate(date.getDate() + 1)));
+let dayTomorrow = date.getFullYear() + '-' + ("0" + (tomorrow.getMonth() + 1)).slice(-2) + '-' + ("0" + tomorrow.getDate()).slice(-2);
+let streamLink = {Etienne: "edelive", Simon: "mon_official", Nils: "nilsbomhofflive", Marah: "m_a_r_a_h", Viet: "pixelviet", Florentin: "florentinwill", Krogmann: "krogmann"};
 
-async function loadData() {
-    let sendeplanJson = await fetch('https://api.rocketbeans.tv/v1/schedule/normalized/?startDay=' + Math.round(new Date().getTime() / 1000));
+async function loadLive() {
+    let sendeplanJson = await fetch('https://api.rocketbeans.tv/v1/schedule/normalized/?startDay=' + Math.round(yesterday.getTime() / 1000));
     let data = await sendeplanJson.json();
 
     data.data.forEach(days => {
         console.log(days);
         let sendeDate = (days.date).split('T');
 
-        if (sendeDate[0] == dayNow) {
+        if (sendeDate[0] == dayNow || sendeDate[0] == dayTomorrow) {
+
+            curr_show_day = new Date(days.date);
+            content_live.innerHTML += '<span class="new-day">'+ days_Name[curr_show_day.getDay()] + ', ' + curr_show_day.getDate() + '.' + (curr_show_day.getMonth()+1)  + '</span>';
+
+            if( days.elements.length == 0) {
+                content_live.innerHTML += '<span class="no-content">Kein geplanter Livecontent</span>';
+                return;
+            }
             days.elements.forEach(sendung => {
                 let sendeTime = new Date(sendung.timeStart);
                 let onAir, live, showImage, type = '', vod = '';
@@ -28,28 +44,16 @@ async function loadData() {
 
                 }else {
                     type = '';
-                }
-
-                if( sendung.type == "rerun" ){
-
-                    if(loadShowData(sendung.episodeId)){
-                        vod = '<a href="https://rocketbeans.tv/mediathek/video/' + sendung.episodeId + '" target="_blank"><div class="vod-yt"><img src="images/svg/yt.svg"></div></a></div>';
-                    }else {
-                        vod = '';
-                    }
-
-                }else {
-                    vod = '';
-                }                
+                }               
 
                 if ((new Date()).getTime() > new Date(sendung.timeStart).getTime() && (new Date()).getTime() < new Date(sendung.timeEnd).getTime()) {
                     
-                    if(sendung.channelGroups.type != "talent"){
+                    if(sendung.channelGroups[0].type != "talent"){
                         onAir = '<div class="onair"></div>';
                         live = 'live'
                     } else {
                         onAir = '<div class="onair twitch"></div>';
-                        vod = '<a href="https://twitch.tv/' + streamLink[sendung.channelGroups[0].name] + '" target="_blank"><div class="vod-twitch"><img src="images/svg/twitch.svg">Livestream</div></a></div>';
+                        vod = '<a href="https://twitch.tv/' + streamLink[sendung.channelGroups[0].name] + '" target="_blank"><div class="vod-twitch twitch"><img src="images/svg/twitch.svg"></div></a></div>';
                         live = '';
                     }
                     
@@ -81,16 +85,34 @@ async function loadData() {
     });
 }
 
-async function loadShowData(id) {
-    let sendeplanJson = await fetch('https://api.rocketbeans.tv/v1//media/episode/preview/' + id);
-    let dataShow = await sendeplanJson.json();
+async function loadVod() {
+    let uploadplanJson = await fetch('https://api.rocketbeans.tv/v1/schedule/publish?from=' + Math.round(yesterday.getTime() / 1000));
+    let dataVod = await uploadplanJson.json();
 
-    dataShow.success.forEach(result => {
-        return result;
+    dataVod.data.forEach(vods => {
+        console.log(vods);
+        let vod_sendeDate = (vods.date).split('T');
+
+        if (vod_sendeDate[0] == dayNow || vod_sendeDate[0] == dayTomorrow) {
+
+            curr_show_day = new Date(vods.date);
+            content_vod.innerHTML += '<span class="new-day">'+ days_Name[curr_show_day.getDay()] + ', ' + curr_show_day.getDate() + '.' + (curr_show_day.getMonth()+1)  + '</span>';
+            
+            if( vods.elements.length == 0) {
+                return;
+            }
+            vods.elements.forEach(show => {
+                let vod_sendeTime = new Date(show.uploadDate);
+
+                let vodShowImage = (show.showThumbnail[0].url != null) ? '<div class="show-image" style="background-image: url(' + show.showThumbnail[0].url + ');"></div>' : '<div class="show-image" style="background-image: url(images/placeholder.png);"></div>'
+                content_vod.innerHTML += '<div class="box"><div class="time">' + (vod_sendeTime.getHours() + ':' + ("0" + vod_sendeTime.getMinutes()).slice(-2)).toString() + ' Uhr</div>' +
+                    '<span class="title">' + show.showTitle + '</span><br>' + show.title + vodShowImage + '<div>';
+            });
+            return;
+        }
+
     });
 }
-
-loadData();
 
 chrome.tabs.query({ 'active': true, 'lastFocusedWindow': true }, function (tabs) {
     var refBox = document.getElementById("ref-link");
@@ -120,7 +142,7 @@ chrome.tabs.query({ 'active': true, 'lastFocusedWindow': true }, function (tabs)
         if (found != null) {
             refBox.style.display = "block";
             var site = (rex[i].toString()).replace(/\//g, "")
-            refBox.innerHTML = '<div><a id="isclicked" href="' + refs[i] + '" target="_blank"><span>Klicke um RBTV auf ' + site.charAt(0).toUpperCase() + site.slice(1) + ' zu Unterst&uuml;tze</span><img src="images/svg/' + site + '.svg"></a></div><div class="thx" id="thx"><img src="images/svg/heart.svg"></div>';
+            refBox.innerHTML = '<div><a href="' + refs[i] + '" target="_blank"><span>Klicke um RBTV auf ' + site.charAt(0).toUpperCase() + site.slice(1) + ' zu Unterst&uuml;tze</span><img src="images/svg/' + site + '.svg"></a></div>';
             return;
         }
     }    
@@ -146,3 +168,6 @@ document.addEventListener('DOMContentLoaded', function() {
         content_vod.classList.remove('hidden');
     });
 });
+
+loadLive();
+loadVod();

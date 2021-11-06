@@ -1,5 +1,5 @@
 var found;
-var rex = [/amazon/, /gog/, /fantasywelt/, /alternate/, /otto/, /razer/, /ebay/];
+var rex = [/amazon/, /gog/, /fantasywelt/, /alternate/, /otto/, /razer/, /ebay/, /4netplayers/];
 
 chrome.tabs.onUpdated.addListener((tabId, change, tab) => {
     if (change.url) {

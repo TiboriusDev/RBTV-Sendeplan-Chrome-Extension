@@ -40,7 +40,7 @@ async function ReadStreamData(){
     })
     .then(data => {
         data.data.forEach(element => {
-        output += '<a href="https://www.twitch.tv/'+ element.user_login +'" target="_blank" title="'+ element.user_name +' streamt '+ element.game_name + ' - ' +element.title+'" style="background-image: url(/images/streams/'+element.user_login+'.png);"></a>';
+        output += '<a href="https://www.twitch.tv/'+ element.user_login +'" target="_blank" title="'+ element.user_name +'\n'+ element.game_name + '\n' +element.title+'" style="background-image: url(/images/streams/'+element.user_login+'.png);"></a>';
         });
 
         document.getElementById('streams').innerHTML = output;
