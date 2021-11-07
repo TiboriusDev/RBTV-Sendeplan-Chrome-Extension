@@ -1,8 +1,8 @@
 const clientId = 'wc8bif8v6qw22tbw5zjoi8x6q0yjkv';
 const secretId = 'l4e7ibuabugg0mluddqg3tycth82vy';
 var access_token;
-var ids = [ "edelive" , "florentinwill" , "krogmann" , "m_a_r_a_h" , "nilsbomhofflive" , "mon_official" , "pixelviet" ]
-var url = 'https://api.twitch.tv/helix/streams?user_login=mon_official&user_login=pixelviet&user_login=edelive&user_login=florentinwill&user_login=krogmann&user_login=nilsbomhofflive&user_login=m_a_r_a_h';
+var ids = [ "edelive" , "florentinwill" , "krogmann" , "m_a_r_a_h" , "nilsbomhofflive" , "mon_official" , "pixelviet", "tonimarony32" ]
+var url = 'https://api.twitch.tv/helix/streams?user_login=mon_official&user_login=pixelviet&user_login=edelive&user_login=florentinwill&user_login=krogmann&user_login=nilsbomhofflive&user_login=m_a_r_a_h&user_login=tonimarony32';
 
 // Get Livestreamdaten
 async function LivestreamDaten(){
@@ -40,7 +40,7 @@ async function ReadStreamData(){
     })
     .then(data => {
         data.data.forEach(element => {
-        output += '<a href="https://www.twitch.tv/'+ element.user_login +'" target="_blank" title="'+ element.user_name +'\n'+ element.game_name + '\n' +element.title+'" style="background-image: url(/images/streams/'+element.user_login+'.png);"></a>';
+        output += '<a href="https://www.twitch.tv/'+ element.user_login +'" target="_blank" title="'+ element.user_name +'\n'+ element.game_name + '\n' +element.title+'" style="background-image: url(/images/streams/'+element.user_login+'.webp);"></a>';
         });
 
         document.getElementById('streams').innerHTML = output;
