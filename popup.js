@@ -1,6 +1,6 @@
 document.cookie = "SameSite=None; Secure";
 
-var curr_show_day;
+var curr_show_day, time, minutes, hours, timeOutput;
 
 const days_Name = ["Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag", "Sonntag"];
 
@@ -53,7 +53,7 @@ async function loadLive() {
                         live = 'live'
                     } else {
                         onAir = '<div class="onair twitch"></div>';
-                        vod = '<a href="https://twitch.tv/' + streamLink[sendung.channelGroups[0].name] + '" target="_blank"><div class="vod-twitch twitch"><img src="images/svg/twitch.svg"></div></a></div>';
+                        vod = '<a href="https://twitch.tv/' + streamLink[sendung.channelGroups[0].name] + '" target="_blank" title="Zum Stream auf Twitch"><div class="external-link twitch"><img src="images/svg/twitch.svg"></div></a></div>';
                         live = '';
                     }
                     
@@ -62,10 +62,10 @@ async function loadLive() {
                     live = '';
                 }
 
-                let time = sendung.duration / 60;
-                let minutes = time % 60;
-                let hours = Math.floor(time / 60);
-                let timeOutput = ((hours > 0) ? hours + ' Std ' + ( (minutes > 0) ? minutes + ' Min' : '' ) : minutes + ' Min')
+                time = sendung.duration / 60;
+                minutes = time % 60;
+                hours = Math.floor(time / 60);
+                timeOutput = ((hours > 0) ? hours + ' Std ' + ( (minutes > 0) ? minutes + ' Min' : '' ) : minutes + ' Min')
 
                 showImage = (sendung.episodeImage != null) ? '<div class="show-image" style="background-image: url(' + sendung.episodeImage + ');"></div>' : '<div class="show-image" style="background-image: url(images/placeholder.png);"></div>'
                 content_live.innerHTML += '<div class="box" id="' + live + '">' + type + '<div class="time">' + (sendeTime.getHours() + ':' + ("0" + sendeTime.getMinutes()).slice(-2)).toString() + ' Uhr</div>' +
@@ -86,11 +86,31 @@ async function loadLive() {
 }
 
 async function loadVod() {
+    let mediaJson = await fetch('https://api.rocketbeans.tv/v1/media/episode/preview/newest?limit=5');
+    let dataMedia = await mediaJson.json();
+    let mediaLink = '';
+
+    content_vod.innerHTML += '<span class="new-day">Neues aus der Mediathek</span>';
+
+    dataMedia.data.episodes.forEach(media => {
+
+        time = media.duration / 60;
+        minutes = parseInt(time % 60);
+        hours = Math.floor(time / 60);
+        timeOutput = ((hours > 0) ? hours + ' Std ' + ( (minutes > 0) ? minutes + ' Min' : '' ) : minutes + ' Min')
+
+        mediaLink = vod = '<a href="https://rocketbeans.tv/mediathek/video/' + media.id + '" target="_blank" title="Zur RBTV Mediathek"><div class="external-link rbtv"><img src="images/svg/external-link.svg"></div></a></div>';
+        let mediaShowImage = (media.thumbnail[0].url != null) ? '<div class="show-image" style="background-image: url(' + media.thumbnail[0].url + ');"></div>' : '<div class="show-image" style="background-image: url(images/placeholder.png);"></div>'
+        content_vod.innerHTML += '<div class="box">' +
+            '<span class="title">' + media.showName + '</span><br>' + '<div class="dauer">' + timeOutput + '</div>' + media.title + mediaShowImage + '<div>' + vod;
+    });
+
+
     let uploadplanJson = await fetch('https://api.rocketbeans.tv/v1/schedule/publish?from=' + Math.round(yesterday.getTime() / 1000));
     let dataVod = await uploadplanJson.json();
 
     dataVod.data.forEach(vods => {
-        console.log(vods);
+        //console.log(vods);
         let vod_sendeDate = (vods.date).split('T');
 
         if (vod_sendeDate[0] == dayNow || vod_sendeDate[0] == dayTomorrow) {

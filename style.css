@@ -130,14 +130,14 @@ a{ text-decoration: none; }
     content: "";
     position: relative;
     pointer-events: none;
-    height: 2px;
+    height: 3px;
     width: 98%;
     margin: 3px 0 10px 0;
     background: var(--sendeplan-color-gradient);
 }
 
 .new-day:not(:first-of-type) {
-    margin-top: 30px;
+    margin-top: 40px;
 }
 
 .box{
@@ -233,25 +233,17 @@ a{ text-decoration: none; }
     width: 100%;
 }
 
-.vod-twitch img{
-    height: 15px;
+.external-link img{
+    height: 14px;
 }
 
-.vod-yt img{
-    height: 15px;
-    position: relative;
-    top: 2px;
-    right: 5px;
-}
-
-.vod-twitch, .vod-yt{
+.external-link{
     display: flex;
     position: absolute;
     top: 55px;
-    right: 10px;
+    right: 5px;
     color: #fff;
-    background: #222;
-    padding: 5px 10px;
+    padding: 4px;
     border-radius: var(--sendeplan-border-radius);
 }
 
@@ -278,6 +270,7 @@ a{ text-decoration: none; }
 .premiere{background: #45aaf2;}
 .rerun{background: #333;}
 .twitch{background: #9146ff;}
+.rbtv{background: var(--sendeplan-grey-500);}
 .active{
     background: var(--sendeplan-blue);
     color: var(--sendeplan-color-text-highlight);
