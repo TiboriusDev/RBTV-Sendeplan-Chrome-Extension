@@ -2,7 +2,7 @@
 Zeigt den Sende- und Uploadplan des aktuellen und dem folge Tags von Rocketbeans.tv
 
 ## Anzeigen
-- Live (Rot) und Twitch (Lila) werden durch einen Punkt neben der Startzeit angzeigt.
+- Live (Rot) und Twitch (Lila) werden durch einen Punkt neben der Startzeit angezeigt.
 - Dauer der Sendung steht in der rechten unteren Ecke.
 - Was aktuell läuft wird durch einen Gelben / Lila Balken an der Unterseite angezeigt.
 - Auf der linken Seite sieht man wer auf Twitch Online ist. 
@@ -10,7 +10,7 @@ Zeigt den Sende- und Uploadplan des aktuellen und dem folge Tags von Rocketbeans
 ## Funktionen
 - Beim öffenen springt man direkt zur aktuellen Liveausstrahlung auf RBTV.<br>
 - Ein klick auf das Logo bringt einen zur Rocketbeans.tv Webseite.<br>
-- Wenn man eine Seite besucht, auf der man RBTV unterstützen kann, dann zeit die Erweiterung das an und gibt dir die möglichkeit auf den Link in der Erweiterung zu klicken. 
+- Wenn man eine Seite besucht, auf der man RBTV unterstützen kann, dann zeigt die Erweiterung das an und gibt dir die Möglichkeit auf den Link in der Erweiterung zu klicken. 
 - In den Einstellungen, kann man die Anzahl an neusten Videos aus der Mediathek einstellen, die unter VOD angezeigt werden soll.
 
 ## Bilder
@@ -28,7 +28,7 @@ Zeigt den Sende- und Uploadplan des aktuellen und dem folge Tags von Rocketbeans
 3. chrome://extensions/ in der Adresseleiste aufrufen.
 4. Entwicklungsmodus aktivieren.
 5. Button "Entpackte Erweiterung laden" drücken.
-6. Ordner der entpackten Zip-Dateo auswählen.
+6. Ordner der entpackten Zip-Datei auswählen.
 7. RBTV schauen
 
 ## Credits
