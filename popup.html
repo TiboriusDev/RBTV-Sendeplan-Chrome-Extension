@@ -5,22 +5,23 @@
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-    <header class="topbar">
+    <header class="flex-row topbar">
         <a href="https://rocketbeans.tv" target="_blank"><img src="images/logo.png"></a>
         <span>Rocketbeans Sendeplan</span>
-        <nav class="tabs">
-            <ul>
+        <nav class="flex-row tabs">
+            <ul class="flex-row">
                 <li id="tab_live" class="active">Live</li>
                 <li id="tab_vod" class="">Vod</li>
             </ul>
         </nav>
     </header>
-    <div class="page">
+    <div class="flex-row page">
         <aside id="streams">
         </aside>
-        <article id="content-live" class="content"></article>
+        <article id="content-live" class="flex-col content"></article>
         <article id="content-vod" class="content hidden"></article>
     </div>
+    <span id="openOption" class="btnOption" title="Einstellungen"><img src="images/svg/settings.svg"></span>
     <footer id="ref-link" style="display: none;"></footer>
     
     

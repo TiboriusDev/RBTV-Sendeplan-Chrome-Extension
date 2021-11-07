@@ -50,9 +50,20 @@ body{
     margin: 0;
     position: relative;
     font-family: var(--sendeplan-font-primary);
+    color: var(--sendeplan-color-text);
 }
 
 a{ text-decoration: none; }
+
+.flex-row{ 
+    display: flex;
+    flex-direction: row;
+}
+
+.flex-col{ 
+    display: flex;
+    flex-direction: column;
+}
 
 .topbar{
     position: fixed;
@@ -61,7 +72,6 @@ a{ text-decoration: none; }
     width: 100%;
     background: var(--sendeplan-gray-900);
     z-index: 2;
-    display: flex;
     align-items: center;
     color: var(--sendeplan-color-text);
     font-weight: 500;
@@ -75,12 +85,10 @@ a{ text-decoration: none; }
 }
 
 .tabs {
-    display: flex;
     margin-right: 5px;
 }
 
 .tabs ul {
-    display: flex;
     list-style: none;
 }
 
@@ -97,15 +105,12 @@ a{ text-decoration: none; }
 }
 
 .page{
-    display: flex;
     width: 388px;
 }
 
 .content{
-    height: 471px;
+    height: 500px;
     color: var(--sendeplan-white);
-    display: flex;
-    flex-direction: column;
     margin-top: 40px;
     overflow: auto;
     width: 349px;
@@ -122,8 +127,6 @@ a{ text-decoration: none; }
     color: var(--sendeplan-color-text);
     margin-left: 5px;
     margin-bottom: -4px;
-    display: flex;
-    flex-direction: column;
 }
 
 .new-day::after {
@@ -138,6 +141,19 @@ a{ text-decoration: none; }
 
 .new-day:not(:first-of-type) {
     margin-top: 40px;
+}
+
+.btnOption{
+    cursor: pointer;
+    background: transparent;
+    border: 0;
+    position: absolute;
+    bottom: -60px;
+    left: 11px;
+}
+
+.btnOption img {
+    width: 16px;
 }
 
 .box{
@@ -248,12 +264,11 @@ a{ text-decoration: none; }
 }
 
 #streams{
-    /* border-right: 1px dashed #191e2a; */
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 39px;
-    height: 441px;
+    height: 100%;
     margin-top: 40px;
 }
 
@@ -277,3 +292,52 @@ a{ text-decoration: none; }
 }
 
 .hidden {display: none;}
+
+/*  */
+/*  Option CSS */
+.container-option {
+    margin: 20px 50px;
+}
+
+.container-value label {
+    flex: 0 0 100%;
+    align-self: center;
+    font-weight: 500;
+}
+
+.container-value label > span {
+    font-size: 10px;
+}
+
+.container-value input {
+    width: 40px;
+    text-align: center;
+    border-radius: var(--sendeplan-border-radius);
+    border: 0;
+    background: var(--sendeplan-grey-700);
+    color: var(--sendeplan-color-text);
+}
+
+.container-save{
+    margin-top: 15px;
+}
+
+.container-save span{
+    height: 20px;
+    text-align: left;
+}
+
+.status {
+    color: var(--sendeplan-yelow);
+}
+
+.save {
+    padding: 5px 10px;
+    margin: 2px;
+    border-radius: var(--sendeplan-border-radius);
+    border: 0;
+    background: var(--sendeplan-blue);
+    color: var(--sendeplan-color-text-highlight);
+    cursor: pointer;
+    width: fit-content;
+}

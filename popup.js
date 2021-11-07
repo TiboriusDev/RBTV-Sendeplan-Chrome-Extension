@@ -1,17 +1,20 @@
-document.cookie = "SameSite=None; Secure";
-
-var curr_show_day, time, minutes, hours, timeOutput;
+var background = chrome.extension.getBackgroundPage();
+number = background.number_of_query;
+console.log(number);
 
 const days_Name = ["Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag", "Sonntag"];
+const streamLink = {Etienne: "edelive", Simon: "mon_official", Nils: "nilsbomhofflive", Marah: "m_a_r_a_h", Viet: "pixelviet", Florentin: "florentinwill", Krogmann: "krogmann"};
 
 const content_live = document.getElementById("content-live");
 const content_vod = document.getElementById("content-vod");
+
 let date = new Date();
 let yesterday = new Date((date.setDate(date.getDate() - 1)));
 let dayNow = date.getFullYear() + '-' + ("0" + (yesterday.getMonth() + 1)).slice(-2) + '-' + ("0" + yesterday.getDate()).slice(-2);
 let tomorrow = new Date((date.setDate(date.getDate() + 1)));
 let dayTomorrow = date.getFullYear() + '-' + ("0" + (tomorrow.getMonth() + 1)).slice(-2) + '-' + ("0" + tomorrow.getDate()).slice(-2);
-let streamLink = {Etienne: "edelive", Simon: "mon_official", Nils: "nilsbomhofflive", Marah: "m_a_r_a_h", Viet: "pixelviet", Florentin: "florentinwill", Krogmann: "krogmann"};
+
+var curr_show_day, time, minutes, hours, timeOutput;
 
 async function loadLive() {
     let sendeplanJson = await fetch('https://api.rocketbeans.tv/v1/schedule/normalized/?startDay=' + Math.round(yesterday.getTime() / 1000));
@@ -24,7 +27,7 @@ async function loadLive() {
         if (sendeDate[0] == dayNow || sendeDate[0] == dayTomorrow) {
 
             curr_show_day = new Date(days.date);
-            content_live.innerHTML += '<span class="new-day">'+ days_Name[curr_show_day.getDay()] + ', ' + curr_show_day.getDate() + '.' + (curr_show_day.getMonth()+1)  + '</span>';
+            content_live.innerHTML += '<span class="flex-col new-day">'+ days_Name[curr_show_day.getDay()] + ', ' + curr_show_day.getDate() + '.' + (curr_show_day.getMonth()+1)  + '</span>';
 
             if( days.elements.length == 0) {
                 content_live.innerHTML += '<span class="no-content">Kein geplanter Livecontent</span>';
@@ -86,25 +89,27 @@ async function loadLive() {
 }
 
 async function loadVod() {
-    let mediaJson = await fetch('https://api.rocketbeans.tv/v1/media/episode/preview/newest?limit=5');
-    let dataMedia = await mediaJson.json();
-    let mediaLink = '';
 
-    content_vod.innerHTML += '<span class="new-day">Neues aus der Mediathek</span>';
+    if( number != 0 ){
+        let mediaJson = await fetch('https://api.rocketbeans.tv/v1/media/episode/preview/newest?limit=' + number);
+        let dataMedia = await mediaJson.json();
+        let mediaLink = '';
 
-    dataMedia.data.episodes.forEach(media => {
+        content_vod.innerHTML += '<span class="flex-col new-day">Neues aus der Mediathek</span>';
 
-        time = media.duration / 60;
-        minutes = parseInt(time % 60);
-        hours = Math.floor(time / 60);
-        timeOutput = ((hours > 0) ? hours + ' Std ' + ( (minutes > 0) ? minutes + ' Min' : '' ) : minutes + ' Min')
+        dataMedia.data.episodes.forEach(media => {
 
-        mediaLink = vod = '<a href="https://rocketbeans.tv/mediathek/video/' + media.id + '" target="_blank" title="Zur RBTV Mediathek"><div class="external-link rbtv"><img src="images/svg/external-link.svg"></div></a></div>';
-        let mediaShowImage = (media.thumbnail[0].url != null) ? '<div class="show-image" style="background-image: url(' + media.thumbnail[0].url + ');"></div>' : '<div class="show-image" style="background-image: url(images/placeholder.png);"></div>'
-        content_vod.innerHTML += '<div class="box">' +
-            '<span class="title">' + media.showName + '</span><br>' + '<div class="dauer">' + timeOutput + '</div>' + media.title + mediaShowImage + '<div>' + vod;
-    });
+            time = media.duration / 60;
+            minutes = parseInt(time % 60);
+            hours = Math.floor(time / 60);
+            timeOutput = ((hours > 0) ? hours + ' Std ' + ( (minutes > 0) ? minutes + ' Min' : '' ) : minutes + ' Min')
 
+            mediaLink = vod = '<a href="https://rocketbeans.tv/mediathek/video/' + media.id + '" target="_blank" title="Zur RBTV Mediathek"><div class="external-link rbtv"><img src="images/svg/external-link.svg"></div></a></div>';
+            let mediaShowImage = (media.thumbnail[0].url != null) ? '<div class="show-image" style="background-image: url(' + media.thumbnail[0].url + ');"></div>' : '<div class="show-image" style="background-image: url(images/placeholder.png);"></div>'
+            content_vod.innerHTML += '<div class="box">' +
+                '<span class="title">' + media.showName + '</span><br>' + '<div class="dauer">' + timeOutput + '</div>' + media.title + mediaShowImage + '<div>' + vod;
+        });
+    }
 
     let uploadplanJson = await fetch('https://api.rocketbeans.tv/v1/schedule/publish?from=' + Math.round(yesterday.getTime() / 1000));
     let dataVod = await uploadplanJson.json();
@@ -116,7 +121,7 @@ async function loadVod() {
         if (vod_sendeDate[0] == dayNow || vod_sendeDate[0] == dayTomorrow) {
 
             curr_show_day = new Date(vods.date);
-            content_vod.innerHTML += '<span class="new-day">'+ days_Name[curr_show_day.getDay()] + ', ' + curr_show_day.getDate() + '.' + (curr_show_day.getMonth()+1)  + '</span>';
+            content_vod.innerHTML += '<span class="flex-col new-day">'+ days_Name[curr_show_day.getDay()] + ', ' + curr_show_day.getDate() + '.' + (curr_show_day.getMonth()+1)  + '</span>';
             
             if( vods.elements.length == 0) {
                 return;
@@ -168,6 +173,8 @@ chrome.tabs.query({ 'active': true, 'lastFocusedWindow': true }, function (tabs)
     }    
 });
 
+
+
 document.addEventListener('DOMContentLoaded', function() {
     var btn_live = document.getElementById('tab_live');
     var btn_vod = document.getElementById('tab_vod');
@@ -187,6 +194,14 @@ document.addEventListener('DOMContentLoaded', function() {
         content_live.classList.add('hidden');
         content_vod.classList.remove('hidden');
     });
+});
+
+document.querySelector('#openOption').addEventListener('click', function() {
+    if (chrome.runtime.openOptionsPage) {
+      chrome.runtime.openOptionsPage();
+    } else {
+      window.open(chrome.runtime.getURL('options.html'));
+    }
 });
 
 loadLive();
