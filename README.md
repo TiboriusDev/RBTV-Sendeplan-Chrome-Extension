@@ -14,7 +14,12 @@ Zeigt den Sende- und Uploadplan des aktuellen und dem folge Tags von Rocketbeans
 - In den Einstellungen, kann man die Anzahl an neusten Videos aus der Mediathek einstellen, die unter VOD angezeigt werden soll.
 
 ## Bild
-![GitHub Logo](https://dl.tiborius.com/img_chrome_1.png)
+#### Live
+![GitHub Logo](https://dl.tiborius.com/img_erweiterung_1.jpg)
+#### Vod
+![GitHub Logo](https://dl.tiborius.com/img_erweiterung_2.jpg)
+#### Einstellung
+![GitHub Logo](https://dl.tiborius.com/img_erweiterung_3.jpg)
 
 ## Installation
 #### Chrome basierte Browser (Chrome / Edge / Vivaldi / Opera usw)
