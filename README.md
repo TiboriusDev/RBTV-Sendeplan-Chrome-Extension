@@ -1,3 +1,6 @@
+![](https://img.shields.io/badge/Version-1.4-brightgreen?style=for-the-badge) 
+[![Github all releases](https://img.shields.io/github/downloads/TiboriusDev/RBTV-Sendeplan-Chrome-Extension/total.svg?style=for-the-badge)](https://GitHub.com/TiboriusDev/RBTV-Sendeplan-Chrome-Extension/releases/)
+
 # RBTV-Sendeplan-Chrome-Extension
 Zeigt den Sende- und Uploadplan des aktuellen und dem folge Tags von Rocketbeans.tv
 
@@ -15,11 +18,11 @@ Zeigt den Sende- und Uploadplan des aktuellen und dem folge Tags von Rocketbeans
 
 ## Bilder
 ### Live
-![GitHub Logo](https://dl.tiborius.com/img_erweiterung_1.jpg)
+![Image](https://dl.tiborius.com/img_erweiterung_1.jpg)
 ### Vod
-![GitHub Logo](https://dl.tiborius.com/img_erweiterung_2.jpg)
+![Image](https://dl.tiborius.com/img_erweiterung_2.jpg)
 ### Einstellung
-![GitHub Logo](https://dl.tiborius.com/img_erweiterung_3.jpg)
+![Image](https://dl.tiborius.com/img_erweiterung_3.jpg)
 
 ## Installation
 #### Chrome basierte Browser (Chrome / Edge / Vivaldi / Opera usw)
