@@ -13,12 +13,12 @@ Zeigt den Sende- und Uploadplan des aktuellen und dem folge Tags von Rocketbeans
 - Wenn man eine Seite besucht, auf der man RBTV unterstützen kann, dann zeit die Erweiterung das an und gibt dir die möglichkeit auf den Link in der Erweiterung zu klicken. 
 - In den Einstellungen, kann man die Anzahl an neusten Videos aus der Mediathek einstellen, die unter VOD angezeigt werden soll.
 
-## Bild
-#### Live
+## Bilder
+### Live
 ![GitHub Logo](https://dl.tiborius.com/img_erweiterung_1.jpg)
-#### Vod
+### Vod
 ![GitHub Logo](https://dl.tiborius.com/img_erweiterung_2.jpg)
-#### Einstellung
+### Einstellung
 ![GitHub Logo](https://dl.tiborius.com/img_erweiterung_3.jpg)
 
 ## Installation
