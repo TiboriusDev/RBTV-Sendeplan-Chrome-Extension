@@ -34,3 +34,5 @@ Zeigt den Sende- und Uploadplan des aktuellen und dem folge Tags von Rocketbeans
 ## Credits
 Bilder in dieser Erweiterung sind Eigentum der Rocket Beans Entertainment GmbH<br>
 Aussehen an die Webseite von RBTV angepasst.
+#### Icons
+Github @tabler/tabler-icons
