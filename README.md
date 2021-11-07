@@ -1,5 +1,7 @@
-![](https://img.shields.io/badge/Version-1.4-brightgreen?style=for-the-badge) 
-[![Github all releases](https://img.shields.io/github/downloads/TiboriusDev/RBTV-Sendeplan-Chrome-Extension/total.svg?style=for-the-badge)](https://GitHub.com/TiboriusDev/RBTV-Sendeplan-Chrome-Extension/releases/)
+![Github_version](https://img.shields.io/github/v/release/tiboriusdev/RBTV-Sendeplan-Chrome-Extension?color=brightgreen&label=Version&style=for-the-badge) 
+[![Github all releases](https://img.shields.io/github/downloads/TiboriusDev/RBTV-Sendeplan-Chrome-Extension/total?style=for-the-badge)](https://GitHub.com/TiboriusDev/RBTV-Sendeplan-Chrome-Extension/releases/) 
+![Github_platform](https://img.shields.io/static/v1?label=Platform&message=Chrome&color=%234285f4&style=for-the-badge) 
+[![Github_website](https://img.shields.io/badge/Website-tiborius.com-yellow?&style=for-the-badge)](https://tiborius.com)
 
 # RBTV-Sendeplan-Chrome-Extension
 Zeigt den Sende- und Uploadplan des aktuellen und dem folge Tags von Rocketbeans.tv
