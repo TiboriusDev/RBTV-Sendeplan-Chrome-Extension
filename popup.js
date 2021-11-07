@@ -2,7 +2,7 @@ var background = chrome.extension.getBackgroundPage();
 number = background.number_of_query;
 console.log(number);
 
-const days_Name = ["Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag", "Sonntag"];
+const days_Name = ["Sonntag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag"];
 const streamLink = {Etienne: "edelive", Simon: "mon_official", Nils: "nilsbomhofflive", Marah: "m_a_r_a_h", Viet: "pixelviet", Florentin: "florentinwill", Krogmann: "krogmann"};
 
 const content_live = document.getElementById("content-live");
