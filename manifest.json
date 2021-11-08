@@ -1,6 +1,6 @@
 {
   "name": "RBTV Sendeplan",
-  "version": "1.6",
+  "version": "1.7",
   "description": "Zeigt den Sende- und Uploadplan von Rocketbeans.tv",
   "permissions": ["storage","activeTab", "tabs", "<all_urls>"],
   "manifest_version": 2,
