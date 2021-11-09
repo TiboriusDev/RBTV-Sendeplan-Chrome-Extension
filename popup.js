@@ -70,7 +70,7 @@ async function loadLive() {
                 hours = Math.floor(time / 60);
                 timeOutput = ((hours > 0) ? hours + ' Std ' + ( (minutes > 0) ? minutes + ' Min' : '' ) : minutes + ' Min')
 
-                showImage = (sendung.episodeImage != null) ? '<div class="show-image" style="background-image: url(' + sendung.episodeImage + ');"></div>' : '<div class="show-image" style="background-image: url(images/placeholder.png);"></div>'
+                showImage = (sendung.episodeImage != null) ? '<div class="show-image" style="background-image: url(' + sendung.episodeImage + ');"></div>' : '<div class="show-image" style="background-image: url(images/placeholder.webp);"></div>'
                 content_live.innerHTML += '<div class="box" id="' + live + '">' + type + '<div class="time">' + (sendeTime.getHours() + ':' + ("0" + sendeTime.getMinutes()).slice(-2)).toString() + ' Uhr</div>' +
                     '<span class="title">' + sendung.title + '</span><br>' + sendung.topic +
                     '<div class="dauer">' + timeOutput + '</div>' + onAir + showImage + '<div>' +
@@ -105,7 +105,7 @@ async function loadVod() {
             timeOutput = ((hours > 0) ? hours + ' Std ' + ( (minutes > 0) ? minutes + ' Min' : '' ) : minutes + ' Min')
 
             mediaLink = vod = '<a href="https://rocketbeans.tv/mediathek/video/' + media.id + '" target="_blank" title="Zur RBTV Mediathek"><div class="external-link rbtv"><img src="images/svg/external-link.svg"></div></a></div>';
-            let mediaShowImage = (media.thumbnail[0].url != null) ? '<div class="show-image" style="background-image: url(' + media.thumbnail[0].url + ');"></div>' : '<div class="show-image" style="background-image: url(images/placeholder.png);"></div>'
+            let mediaShowImage = (media.thumbnail[0].url != null) ? '<div class="show-image" style="background-image: url(' + media.thumbnail[0].url + ');"></div>' : '<div class="show-image" style="background-image: url(images/placeholder.webp);"></div>'
             content_vod.innerHTML += '<div class="box">' +
                 '<span class="title">' + media.showName + '</span><br>' + '<div class="dauer">' + timeOutput + '</div>' + media.title + mediaShowImage + '<div>' + vod;
         });
@@ -129,7 +129,7 @@ async function loadVod() {
             vods.elements.forEach(show => {
                 let vod_sendeTime = new Date(show.uploadDate);
 
-                let vodShowImage = (show.showThumbnail[0].url != null) ? '<div class="show-image" style="background-image: url(' + show.showThumbnail[0].url + ');"></div>' : '<div class="show-image" style="background-image: url(images/placeholder.png);"></div>'
+                let vodShowImage = (show.showThumbnail[0].url != null) ? '<div class="show-image" style="background-image: url(' + show.showThumbnail[0].url + ');"></div>' : '<div class="show-image" style="background-image: url(images/placeholder.webp);"></div>'
                 content_vod.innerHTML += '<div class="box"><div class="time">' + (vod_sendeTime.getHours() + ':' + ("0" + vod_sendeTime.getMinutes()).slice(-2)).toString() + ' Uhr</div>' +
                     '<span class="title">' + show.showTitle + '</span><br>' + show.title + vodShowImage + '<div>';
             });
