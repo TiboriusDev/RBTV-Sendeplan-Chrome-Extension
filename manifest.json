@@ -1,6 +1,6 @@
 {
   "name": "RBTV Sendeplan",
-  "version": "1.8",
+  "version": "1.9",
   "description": "Zeigt den Sende- und Uploadplan von Rocketbeans.tv",
   "permissions": ["storage","activeTab", "tabs", "<all_urls>"],
   "manifest_version": 2,
@@ -14,11 +14,11 @@
   },
   "browser_action": {
       "default_popup": "popup.html",
-      "default_icon": "images/logo.webp"
+      "default_icon": "images/logo.png"
     },
   "icons": {
-    "16": "images/logo.webp",
-    "48": "images/logo.webp",
-    "128": "images/logo.webp"
+    "16": "images/logo.png",
+    "48": "images/logo.png",
+    "128": "images/logo.png"
   }
 }

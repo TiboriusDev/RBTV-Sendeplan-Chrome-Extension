@@ -1,4 +1,3 @@
-var twitch = chrome.extension.twitch.js;
 var found, number_of_query = 3;
 let rex = [/amazon/, /gog/, /fantasywelt/, /alternate/, /otto/, /razer/, /ebay/, /4netplayers/];
 

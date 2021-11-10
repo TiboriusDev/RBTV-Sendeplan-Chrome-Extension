@@ -143,7 +143,7 @@ a{ text-decoration: none; }
     margin-top: 40px;
 }
 
-.btnOption{
+#openOption{
     cursor: pointer;
     background: transparent;
     border: 0;
@@ -152,7 +152,7 @@ a{ text-decoration: none; }
     left: 11px;
 }
 
-.btnOption img {
+#openOption img {
     width: 16px;
 }
 
