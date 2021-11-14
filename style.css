@@ -319,6 +319,11 @@ a{ text-decoration: none; }
     margin-bottom: 0;
 }
 
+#streams span > span > p:nth-child(3) {
+    min-height: 26px;
+    margin: 0;
+}
+
 #streams span > span > p:nth-child(2),
 #streams span > span > p:nth-child(3) {
     position: relative;
