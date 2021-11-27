@@ -25,6 +25,22 @@
          url('/fonts/rubik-v14-latin-500.svg#Rubik') format('svg'); /* Legacy iOS */
 }
 
+body{
+    width: 388px;
+    max-height: 471px;
+    background: var(--sendeplan-gray-900);
+    margin: 0;
+    position: relative;
+    font-family: var(--sendeplan-font-primary);
+    color: var(--sendeplan-color-text);
+}
+
+a{ text-decoration: none; }
+
+::-webkit-scrollbar {
+    width: 0;
+}
+
 :root {
     --sendeplan-font-primary: 'Rubik', Arial, Helvetica, sans-serif;
 
@@ -42,18 +58,6 @@
 
     --sendeplan-border-radius: 5px;
 }
-
-body{
-    width: 388px;
-    max-height: 471px;
-    background: var(--sendeplan-gray-900);
-    margin: 0;
-    position: relative;
-    font-family: var(--sendeplan-font-primary);
-    color: var(--sendeplan-color-text);
-}
-
-a{ text-decoration: none; }
 
 .flex-row{ 
     display: flex;
@@ -143,19 +147,6 @@ a{ text-decoration: none; }
     margin-top: 40px;
 }
 
-#openOption{
-    cursor: pointer;
-    background: transparent;
-    border: 0;
-    position: absolute;
-    bottom: -60px;
-    left: 11px;
-}
-
-#openOption img {
-    width: 16px;
-}
-
 .box{
     margin: 4px 5px;
     padding: 55px 10px 10px 10px;
@@ -176,10 +167,6 @@ a{ text-decoration: none; }
 
 .time{
     line-height: 16px;
-}
-
-::-webkit-scrollbar {
-    width: 0;
 }
 
 .dot{
@@ -220,35 +207,6 @@ a{ text-decoration: none; }
     background-size: cover;
 }
 
-#ref-link{
-    bottom: 0;
-    width: 100%;
-    height: 30px;
-    background: var(--sendeplan-gray-900); 
-    text-align: right;
-}
-
-#ref-link a {
-    color: var(--sendeplan-yelow);
-    font-weight: 500;
-}
-
-#ref-link span{
-    position: relative;
-    top: -11px;
-}
-
-#ref-link img{
-    height: 20px;
-    padding: 5px;
-}
-
-#ref-link > div{
-    cursor: pointer;
-    height: 100%;
-    width: 100%;
-}
-
 .external-link img{
     height: 14px;
 }
@@ -261,6 +219,80 @@ a{ text-decoration: none; }
     color: #fff;
     padding: 4px;
     border-radius: var(--sendeplan-border-radius);
+}
+
+.live{background: #fc5c65;}
+.premiere{background: #45aaf2;}
+.rerun{background: #333;}
+.twitch{background: #9146ff;}
+.rbtv{background: var(--sendeplan-grey-500);}
+.active{
+    background: var(--sendeplan-blue);
+    color: var(--sendeplan-color-text-highlight);
+}
+
+.hidden {display: none;}
+
+/*  */
+/*  Option CSS */
+.container-option {
+    margin: 20px 50px;
+}
+
+.container-value label {
+    flex: 0 0 100%;
+    align-self: center;
+    font-weight: 500;
+}
+
+.container-value label > span {
+    font-size: 10px;
+}
+
+.container-value input {
+    width: 40px;
+    text-align: center;
+    border-radius: var(--sendeplan-border-radius);
+    border: 0;
+    background: var(--sendeplan-grey-700);
+    color: var(--sendeplan-color-text);
+}
+
+.container-save{
+    margin-top: 15px;
+}
+
+.container-save span{
+    height: 20px;
+    text-align: left;
+}
+
+.status {
+    color: var(--sendeplan-yelow);
+}
+
+.save {
+    padding: 5px 10px;
+    margin: 2px;
+    border-radius: var(--sendeplan-border-radius);
+    border: 0;
+    background: var(--sendeplan-blue);
+    color: var(--sendeplan-color-text-highlight);
+    cursor: pointer;
+    width: fit-content;
+}
+
+#openOption{
+    cursor: pointer;
+    background: transparent;
+    border: 0;
+    position: absolute;
+    bottom: -60px;
+    left: 11px;
+}
+
+#openOption img {
+    width: 16px;
 }
 
 #streams{
@@ -335,64 +367,31 @@ a{ text-decoration: none; }
     left: 40px;
 }
 
-.live{background: #fc5c65;}
-.premiere{background: #45aaf2;}
-.rerun{background: #333;}
-.twitch{background: #9146ff;}
-.rbtv{background: var(--sendeplan-grey-500);}
-.active{
-    background: var(--sendeplan-blue);
-    color: var(--sendeplan-color-text-highlight);
+#ref-link{
+    bottom: 0;
+    width: 100%;
+    height: 30px;
+    background: var(--sendeplan-gray-900); 
+    text-align: right;
 }
 
-.hidden {display: none;}
-
-/*  */
-/*  Option CSS */
-.container-option {
-    margin: 20px 50px;
-}
-
-.container-value label {
-    flex: 0 0 100%;
-    align-self: center;
+#ref-link a {
+    color: var(--sendeplan-yelow);
     font-weight: 500;
 }
 
-.container-value label > span {
-    font-size: 10px;
+#ref-link span{
+    position: relative;
+    top: -11px;
 }
 
-.container-value input {
-    width: 40px;
-    text-align: center;
-    border-radius: var(--sendeplan-border-radius);
-    border: 0;
-    background: var(--sendeplan-grey-700);
-    color: var(--sendeplan-color-text);
-}
-
-.container-save{
-    margin-top: 15px;
-}
-
-.container-save span{
+#ref-link img{
     height: 20px;
-    text-align: left;
+    padding: 5px;
 }
 
-.status {
-    color: var(--sendeplan-yelow);
-}
-
-.save {
-    padding: 5px 10px;
-    margin: 2px;
-    border-radius: var(--sendeplan-border-radius);
-    border: 0;
-    background: var(--sendeplan-blue);
-    color: var(--sendeplan-color-text-highlight);
+#ref-link > div{
     cursor: pointer;
-    width: fit-content;
+    height: 100%;
+    width: 100%;
 }
-
