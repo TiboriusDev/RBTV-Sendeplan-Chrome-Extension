@@ -116,7 +116,7 @@ a{ text-decoration: none; }
     height: 500px;
     color: var(--sendeplan-white);
     margin-top: 40px;
-    overflow: auto;
+    overflow: overlay;
     width: 349px;
 }
 
@@ -319,18 +319,19 @@ a{ text-decoration: none; }
 }
 
 #streams span > span{
+    border-radius: var(--sendeplan-border-radius);
+    background: var(--sendeplan-white);
     display: flex;
     flex-direction: column;
-    position: absolute;
-    opacity: 0;
-    top: 0;
     left: 30px;
-    background: var(--sendeplan-white);
+    opacity: 0;
     padding: 10px;
-    width: 250px;
-    border-radius: var(--sendeplan-border-radius);
-    z-index: 99;
+    position: absolute;
+    top: 0;
     transition: all 0.2s linear;
+    width: 250px;
+    visibility: hidden;
+    z-index: 99;
 }
 
 #streams span > span > img {
@@ -365,6 +366,7 @@ a{ text-decoration: none; }
 #streams a:hover + span{
     opacity: 1;
     left: 40px;
+    visibility: visible;
 }
 
 #ref-link{

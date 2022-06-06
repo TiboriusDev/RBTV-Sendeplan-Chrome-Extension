@@ -45,7 +45,7 @@ async function ReadStreamData(){
     })
     .then(data => {
         data.data.forEach(element => {
-        output += '<span><a href="https://www.twitch.tv/'+ element.user_login +'" target="_blank" style="background-image: url(/images/streams/'+element.user_login+'.webp);"></a><span><img src="https://static-cdn.jtvnw.net/ttv-boxart/' + element.game_name + '.jpg"/><p>'+ element.user_name +'</p><p>'+ element.game_name + '</p><p>' +element.title+'</p></span></span>';
+        output += '<span><a href="https://www.twitch.tv/'+ element.user_login +'" target="_blank" style="background-image: url(/images/streams/'+element.user_login+'.webp);"></a><span><img src="https://static-cdn.jtvnw.net/ttv-boxart/' + element.game_id + '.jpg"/><p>'+ element.user_name +'</p><p>'+ element.game_name + '</p><p>' +element.title+'</p></span></span>';
         });
 
         document.getElementById('streams').innerHTML = output;
