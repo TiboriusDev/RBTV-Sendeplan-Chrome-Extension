@@ -3,7 +3,7 @@ number = background.number_of_query;
 console.log(number);
 
 const days_Name = ["Sonntag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag"];
-const streamLink = {Etienne: "edelive", Simon: "mon_official", Nils: "nilsbomhofflive", Marah: "m_a_r_a_h", Viet: "pixelviet", Florentin: "florentinwill", Krogmann: "krogmann"};
+// const streamLink = {Etienne: "edelive", Simon: "mon_official", Nils: "nilsbomhofflive", Marah: "m_a_r_a_h", Viet: "pixelviet", Florentin: "florentinwill", Krogmann: "krogmann", budibros: "budibros"};
 
 const content_live = document.getElementById("content-live");
 const content_vod = document.getElementById("content-vod");
@@ -56,7 +56,7 @@ async function loadLive() {
                         live = 'live'
                     } else {
                         onAir = '<div class="onair twitch"></div>';
-                        vod = '<a href="https://twitch.tv/' + streamLink[sendung.channelGroups[0].name] + '" target="_blank" title="Zum Stream auf Twitch"><div class="external-link twitch"><img src="images/svg/twitch.svg"></div></a></div>';
+                        vod = '<a href="https://twitch.tv/' + sendung.channelGroups[0].channels[0].twitchChannel + '" target="_blank" title="Zum Stream von '+ sendung.channelGroups[0].name +'"><div class="external-link twitch"><img src="images/svg/twitch.svg"></div></a></div>';
                         live = '';
                     }
                     
