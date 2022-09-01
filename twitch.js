@@ -1,7 +1,7 @@
 const clientId = 'wc8bif8v6qw22tbw5zjoi8x6q0yjkv';
 const secretId = 'whymt6x5tfiknyn1xs3eo1w9jkokzp';
 var access_token;
-var ids = ["rocketbeanstv", "edelive" , "florentinwill" , "krogmann" , "m_a_r_a_h" , "nilsbomhofflive" , "mon_official" , "pixelviet", "tonimarony32", "doomdesign", "budibros" ];
+var ids = ["rocketbeanstv", "edelive" , "florentinwill" , "krogmann" , "m_a_r_a_h" , "nilsbomhofflive" , "mon_official" , "pixelviet", "tonimarony32", "doomdesign", "budibros", "itzjanina" ];
 var url = 'https://api.twitch.tv/helix/streams?';
 
 // Get Livestreamdaten
